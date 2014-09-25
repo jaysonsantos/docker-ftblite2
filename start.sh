@@ -11,26 +11,30 @@ fi
 
 cd /data
 
-if [ ! -e "${ZIPFILE}" ]; then
+if [[ ! -e "${ZIPFILE}" ]]; then
     echo "Downloading modpacks%5EFTBLite2%5E${VERSION}%5EFTBLite2Server.zip -> ${ZIPFILE} ..."
     wget -c -O "${ZIPFILE}.part" "http://www.creeperrepo.net/FTB2/modpacks%5EFTBLite2%5E${VERSION}%5EFTBLite2Server.zip"
     mv "${ZIPFILE}"{.part,}
 fi
 
-unzip "${ZIPFILE}"
+[[ -d config ]] || unzip "${ZIPFILE}"
 
-if [ ! -e server.properties ]; then
-  cp /tmp/server.properties .
+if [[ ! -e server.properties ]]; then
+    cp /tmp/server.properties .
 fi
 
-if [ -n "$MOTD" ]; then
-  sed -i "/motd\s*=/ c motd=$MOTD" /data/server.properties
+if [[ -n "$MOTD" ]]; then
+    sed -i "/motd\s*=/ c motd=$MOTD" /data/server.properties
 fi
-if [ -n "$LEVEL" ]; then
-  sed -i "/level-name\s*=/ c level-name=$LEVEL" /data/server.properties
+if [[ -n "$LEVEL" ]]; then
+    sed -i "/level-name\s*=/ c level-name=$LEVEL" /data/server.properties
 fi
-if [ -n "$OPS" ]; then
-  echo $OPS | awk -v RS=, '{print}' >> ops.txt
+if [[ -n "$OPS" ]]; then
+    echo $OPS | awk -v RS=, '{print}' >> ops.txt
+fi
+if [[ -n "$PAX" ]]; then
+    paxctl -C /usr/bin/java
+    paxctl -m /usr/bin/java
 fi
 
 java $JVM_OPTS -jar FTBServer-*.jar nogui
