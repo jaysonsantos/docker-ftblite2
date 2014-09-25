@@ -26,7 +26,7 @@ With that you can easily view the logs, stop, or re-start the container:
 
     docker stop minecraft
 
-    docker start minecraft-vanilla
+    docker start minecraft
 
 
 ## Attaching data directory to host filesystem
