@@ -4,7 +4,7 @@ FROM itzg/ubuntu-openjdk-7
 
 MAINTAINER Rafael G. Martins <rafael@rafaelmartins.eng.br>
 
-RUN apt-get install -y wget unzip paxctl
+RUN apt-get update && apt-get upgrade -y && apt-get install -y wget unzip paxctl
 
 EXPOSE 25565
 
