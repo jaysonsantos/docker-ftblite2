@@ -52,9 +52,9 @@ To use a different Minecraft version, pass the `VERSION` environment variable, w
 * LATEST
 * (or a specific version, such as "1.1.19")
 
-For example, to use the latest snapshot:
+For example, to use the latest version:
 
-    docker run -d -e VERSION=SNAPSHOT ...
+    docker run -d -e VERSION=LATEST ...
 
 or a specific version:
 
