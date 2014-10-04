@@ -7,6 +7,7 @@ MAINTAINER Rafael G. Martins <rafael@rafaelmartins.eng.br>
 RUN apt-get update && apt-get upgrade -y && apt-get install -y wget unzip paxctl
 RUN addgroup --gid 1234 minecraft
 RUN adduser --disabled-password --home=/data --uid 1234 --gid 1234 --gecos "minecraft user" minecraft
+RUN paxctl -C /usr/bin/java && paxctl -m /usr/bin/java
 
 USER minecraft
 

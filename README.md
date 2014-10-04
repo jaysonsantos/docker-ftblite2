@@ -38,13 +38,6 @@ In order to persist the Minecraft data, which you *probably want to do for a rea
 When attached in this way you can stop the server, edit the configuration under your attached ``/path/on/host`` and start the server again with `docker start CONTAINERID` to pick up the new configuration.
 
 
-## PaX
-
-People using PaX will need to export the ``PAX`` environment variable, to make the start script fix ``/usr/bin/java`` permissions (disable MPROTECT):
-
-    docker run -e PAX=1 ...
-
-
 ## Versions
 
 To use a different Minecraft version, pass the `VERSION` environment variable, which can have the value

@@ -32,9 +32,5 @@ fi
 if [[ -n "$OPS" ]]; then
     echo $OPS | awk -v RS=, '{print}' >> ops.txt
 fi
-if [[ -n "$PAX" ]]; then
-    paxctl -C /usr/bin/java
-    paxctl -m /usr/bin/java
-fi
 
 java $JVM_OPTS -jar FTBServer-*.jar nogui
